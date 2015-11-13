@@ -7,7 +7,9 @@ def home():
     if request.method == "GET":
         return render_template("home.html")
     else:
-         
+        location = request.form.get("location")
+        info = getstuff.getAPI(location)
+        return render_template("page.html",info = info);
 if __name__ == "__main__":
     app.debug = True
     app.secret_key = "Idk"
