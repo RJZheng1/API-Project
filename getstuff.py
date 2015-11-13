@@ -13,7 +13,7 @@ def getAPI(name):
     for p in soup.find_all('p'):
         paragraphs.append(p.get_text().encode("ascii","ignore"))
     return paragraphs[0]
-        
-print getAPI("Germany")
+
+#print getAPI("Germany")
 
 
