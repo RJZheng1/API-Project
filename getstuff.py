@@ -12,8 +12,8 @@ def getAPI(name):
     paragraphs = []
     for p in soup.find_all('p'):
         paragraphs.append(p.get_text().encode("ascii","ignore"))
-    print paragraphs[0]
+    return paragraphs[0]
         
-getAPI("Germany")
+print getAPI("Germany")
 
 
