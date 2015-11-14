@@ -17,5 +17,12 @@ def getWiki(location):
         paragraphs.append(p.get_text().encode("utf-8"))
     return paragraphs[0]
 
+def getPlaces(query):
+    """Returns a list of dicts each with info on a different place that matches the query"""
+    placesKey = "AIzaSyCX2pUzMG4Es5RjILnPwBQ8RG1kn0855BI"
+    url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=%s&key=%s"%(query,placesKey)
+    result = json.loads(urllib2.urlopen(url).read())
+    return result['results']
 
-
+def parseQuery(query):
+    return query.replace(" ","_")
