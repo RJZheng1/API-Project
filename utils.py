@@ -14,6 +14,8 @@ def getWiki(location):
     '''
     url1 = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={}&srlimit=1&format=json".format(location)
     result1 = json.loads(urllib2.urlopen(url1).read())
+    if len(result1['query']['search']) == 0:
+        return None
     place = result1['query']['search'][0]['title'].replace(" ", "%20")
     '''
     This will return the text in an article.
@@ -32,16 +34,14 @@ def getWiki(location):
         paragraphs.append(p.get_text().encode("utf-8"))
     return paragraphs[0]
 
+'''NO LONGER IN USE'''
 def getPlaces(query):
-    """Returns a list of dicts each with info on a different place that matches the query"""
+    """Returns a list of dicts each with info on a different place that matches the query
+    DEPRECATED"""
     placesKey = "AIzaSyCX2pUzMG4Es5RjILnPwBQ8RG1kn0855BI"
     url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=%s&key=%s"%(query,placesKey)
     result = json.loads(urllib2.urlopen(url).read())
     return result['results']
-
-def parseQuery(query):
-    """Replaces spaces in a string with underscores"""
-    return query.replace(" ","_")
 
 def coordinates(query):
     """Gets coords for query using bing maps"""
@@ -50,6 +50,8 @@ def coordinates(query):
     url = url%(query,key)
     print url
     result = json.loads(urllib2.urlopen(url).read())
+    if result['resourceSets'][0]['estimatedTotal'] == 0:
+        return None
     coord =  result['resourceSets'][0]['resources'][0]['point']['coordinates']
     coord = {'lat':coord[0], 'lng':coord[1]}
     return coord
