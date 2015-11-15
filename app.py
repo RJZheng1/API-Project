@@ -8,7 +8,7 @@ def home():
     if request.method == "GET":
         return render_template("home.html")
     else:
-        return redirect('/{}'.format(request.form.get('location')))
+        return redirect('/{}'.format(request.form.get('location').replace(" ","")))
 
 @app.route("/<location>",methods = ["GET","POST"])
 def page(location):
