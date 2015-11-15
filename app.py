@@ -13,10 +13,9 @@ def home():
 @app.route("/<location>",methods = ["GET","POST"])
 def page(location):
     info = utils.getWiki(location)
-    places_data = utils.getPlaces(location)
-    coord = places_data[0]['geometry']['location']
-    return render_template("page.html", info = info.decode("utf-8"), lat=coord['lat'], lng=coord['lng'])
-        
+    coord = utils.coordinates(location)
+    print coord
+    return render_template("page.html", info = info.decode("utf-8"), coord = coord)
     
 if __name__ == "__main__":
     app.debug = True
