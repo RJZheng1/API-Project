@@ -1,7 +1,27 @@
 html{
-    margin-left: 100px;
-    margin-right: 100px;
 }
 body{
+	background-image: url("background.jpg");
+	background-position:top;
+	background-size:80%;
+	background-color:black;
+	background-repeat:no-repeat;
     font-family: "Verdana", sans-serif;
+    color: white;
+}
+header{
+	color:white;
+	text-align:center;
+	padding:5px;
+}
+div.transbox{
+	margin: auto;
+	width:300px;
+	margin-top:200px;
+	padding: 30px 30px 30px 30px;
+	background-color: black;
+	background-size: contain;
+	opacity: 0.9;
+	text-align: center;
+	position: bottom;
 }
