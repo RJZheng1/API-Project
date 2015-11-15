@@ -25,4 +25,5 @@ def getPlaces(query):
     return result['results']
 
 def parseQuery(query):
+    """Replaces spaces in a string with underscores"""
     return query.replace(" ","_")

@@ -10,11 +10,13 @@ def home():
     else:
         return redirect('/{}'.format(request.form.get('location')))
 
-@app.route("/<location>")
+@app.route("/<location>",methods = ["GET","POST"])
 def page(location):
     info = utils.getWiki(location)
-    return render_template("page.html", info = info.decode("utf-8"))
-
+    places_data = utils.getPlaces(location)
+    coord = places_data[0]['geometry']['location']
+    return render_template("page.html", info = info.decode("utf-8"), lat=coord['lat'], lng=coord['lng'])
+        
     
 if __name__ == "__main__":
     app.debug = True
