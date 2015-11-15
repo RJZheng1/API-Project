@@ -35,8 +35,11 @@ def getWiki(location):
     paragraphs = []
     for p in soup.find_all('p'):
         paragraphs.append(p.get_text().encode("utf-8"))
-    return paragraphs[0]
-
+    if(paragraphs[0] == ""):
+        return paragraphs[1]
+    else:
+        return paragraphs[0]
+    
 def coordinates(query):
     """Gets coords for query using bing maps"""
     key = "Aj1X2oDWw6lKh5Y5Roy_uyou-ySwIiBhRzBVQMKMG9KVYoWXtw7XczdppkOnXe3L"
