@@ -1,6 +1,19 @@
 html{
+	height:100%;
+    margin: 0;
+    padding: 0;
 }
 body{
+	height:100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Verdana", sans-serif;
+    color: white;
+}
+body.main{
+	height:100%;
+    margin: 0;
+    padding: 0;
 	background-image: url("background.jpg");
 	background-position:top;
 	background-size:80%;
@@ -23,5 +36,20 @@ div.transbox{
 	background-size: contain;
 	opacity: 0.9;
 	text-align: center;
-	position: bottom;
+}
+
+footer{
+	margin: auto;
+	padding: 0px 30px 30px 30px;
+	background-color: black;
+	background-size: contain;
+	opacity: 0.9;
+	position: fixed;
+	bottom: 0;
+	border-style: double;
+	border-color: blue;
+	border-width: thick;
+}
+#map-canvas{
+	height:100%;
 }
