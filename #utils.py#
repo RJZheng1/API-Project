@@ -12,6 +12,7 @@ def getWiki(location):
     key = result2['query']['pages'].keys()[0]
     info = result2[u'query']['pages'][key]['extract']
     soup = BeautifulSoup(info, 'html.parser')
+    return soup.encode("utf-8")
     paragraphs = []
     for p in soup.find_all('p'):
         paragraphs.append(p.get_text().encode("utf-8"))
@@ -29,14 +30,12 @@ def parseQuery(query):
     return query.replace(" ","_")
 
 def coordinates(query):
-    """Gets coords for query using bing maps"""
     key = "Aj1X2oDWw6lKh5Y5Roy_uyou-ySwIiBhRzBVQMKMG9KVYoWXtw7XczdppkOnXe3L"
     url = "http://dev.virtualearth.net/REST/v1/Locations?query=%s&maxResults=1&key=%s"
     url = url%(query,key)
     print url
     result = json.loads(urllib2.urlopen(url).read())
-    coord =  result['resourceSets'][0]['resources'][0]['point']['coordinates']
-    coord = {'lat':coord[0], 'lng':coord[1]}
-    return coord
+    print result.keys()
+    return result
     
 
