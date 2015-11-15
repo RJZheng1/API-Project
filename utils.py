@@ -20,8 +20,11 @@ def getWiki(location):
 def getPlaces(query):
     """Returns a list of dicts each with info on a different place that matches the query"""
     placesKey = "AIzaSyCX2pUzMG4Es5RjILnPwBQ8RG1kn0855BI"
+    print query
+    print "works2"
     url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=%s&key=%s"%(query,placesKey)
     result = json.loads(urllib2.urlopen(url).read())
+    print result.keys()
     return result['results']
 
 def parseQuery(query):
