@@ -1,16 +1,16 @@
-html{
+html{/*presets for the page*/
 	height:100%;
     margin: 0;
     padding: 0;
 }
-body{
+body{/*body text for page.html*/
 	height:100%;
     margin: 0;
     padding: 0;
     font-family: "Verdana", sans-serif;
     color: white;
 }
-body.main{
+body.main{/*body text for home.html*/
 	height:100%;
     margin: 0;
     padding: 0;
@@ -22,12 +22,12 @@ body.main{
     font-family: "Verdana", sans-serif;
     color: white;
 }
-header{
+header{/*header for home.html*/
 	color:white;
 	text-align:center;
 	padding:5px;
 }
-div.transbox{
+div.transbox{/*box used to hold form in home.html*/
 	margin: auto;
 	width:300px;
 	margin-top:200px;
@@ -38,7 +38,7 @@ div.transbox{
 	text-align: center;
 }
 
-footer{
+footer{/*footer that holds text at the bottom of page.html*/
 	margin: auto;
 	padding: 0px 30px 30px 30px;
 	background-color: black;
@@ -50,6 +50,6 @@ footer{
 	border-color: blue;
 	border-width: thick;
 }
-#map-canvas{
+#map-canvas{/*sets size of the map in page.html*/
 	height:100%;
 }
