@@ -4,9 +4,24 @@ from bs4 import BeautifulSoup
 
 #Gets first paragraph from Wikipedia about the location
 def getWiki(location):
+    '''
+    This will return the title of an article that mostly closely matches your query.
+    action=query allows you to get information and data
+    list=search is a submodule used for searching through titles and text. Data is returned in a list.
+    srsearch={} specifies what you are searching for
+    srlimit=1 limits the results to just one page
+    format=json will return the data in json format
+    '''
     url1 = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={}&srlimit=1&format=json".format(location)
     result1 = json.loads(urllib2.urlopen(url1).read())
     place = result1['query']['search'][0]['title'].replace(" ", "%20")
+    '''
+    This will return the text in an article.
+    action=query allows you to get information and data
+    titles={} will look for the wikipedia article with the specified title
+    prop=extracts will return plain-text or limited HTML extracts of the page
+    format=json will return the data in json format
+    '''
     url2 = "https://en.wikipedia.org/w/api.php?action=query&titles={}&prop=extracts&format=json".format(place)
     result2 = json.loads(urllib2.urlopen(url2).read())
     key = result2['query']['pages'].keys()[0]
