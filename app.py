@@ -14,7 +14,6 @@ def home():
 def page(location):
     info = utils.getWiki(location)
     coord = utils.coordinates(location)
-    print coord
     return render_template("page.html", info = info.decode("utf-8"), coord = coord)
     
 if __name__ == "__main__":

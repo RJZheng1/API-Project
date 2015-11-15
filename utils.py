@@ -9,12 +9,15 @@ def getWiki(location):
     action=query allows you to get information and data
     list=search is a submodule used for searching through titles and text. Data is returned in a list.
     srsearch={} specifies what you are searching for
-    srlimit=1 limits the results to just one page
     format=json will return the data in json format
     '''
-    url1 = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={}&srlimit=1&format=json".format(location)
+    url1 = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={}&format=json".format(location)
     result1 = json.loads(urllib2.urlopen(url1).read())
-    place = result1['query']['search'][0]['title'].replace(" ", "%20")
+    place = ""
+    for i in result1['query']['search']:
+        if i['wordcount'] > 1000:
+            place = i['title'].replace(" ", "%20")
+            break
     '''
     This will return the text in an article.
     action=query allows you to get information and data
@@ -48,7 +51,6 @@ def coordinates(query):
     key = "Aj1X2oDWw6lKh5Y5Roy_uyou-ySwIiBhRzBVQMKMG9KVYoWXtw7XczdppkOnXe3L"
     url = "http://dev.virtualearth.net/REST/v1/Locations?query=%s&maxResults=1&key=%s"
     url = url%(query,key)
-    print url
     result = json.loads(urllib2.urlopen(url).read())
     coord =  result['resourceSets'][0]['resources'][0]['point']['coordinates']
     coord = {'lat':coord[0], 'lng':coord[1]}
