@@ -8,14 +8,15 @@ def home():
     if request.method == "GET":
         return render_template("home.html")
     else:
-        return redirect('/{}'.format(request.form.get('location').replace(" ","")))
+        return redirect('/{}'.format(request.form.get('location').replace(" ","_")))
 
 @app.route("/<location>",methods = ["GET","POST"])
 def page(location):
     info = utils.getWiki(location)
+    if info:
+        info = info.decode("utf-8")
     coord = utils.coordinates(location)
-    print coord
-    return render_template("page.html", info = info.decode("utf-8"), coord = coord)
+    return render_template("page.html", info = info, coord = coord)
     
 if __name__ == "__main__":
     app.debug = True
