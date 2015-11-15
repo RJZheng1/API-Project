@@ -16,7 +16,7 @@ def page(location):
     if info:
         info = info.decode("utf-8")
     coord = utils.coordinates(location)
-    return render_template("page.html", info = info, coord = coord)
+    return render_template("page.html", location = location, info = info, coord = coord)
     
 if __name__ == "__main__":
     app.debug = True

@@ -37,7 +37,9 @@ div.transbox{/*box used to hold form in home.html*/
 	opacity: 0.9;
 	text-align: center;
 }
-
+a:visited{
+    color:#fff;
+}
 footer{/*footer that holds text at the bottom of page.html*/
 	margin: auto;
 	padding: 0px 30px 30px 30px;
