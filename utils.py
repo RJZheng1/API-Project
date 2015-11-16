@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 def getWiki(location):
     '''
     This will return the title of an article that mostly closely matches your query.
+    location is the place you wish to find information about
     action=query allows you to get information and data
     list=search is a submodule used for searching through titles and text. Data is returned in a list.
     srsearch={} specifies what you are searching for
@@ -44,7 +45,12 @@ def getWiki(location):
         return paragraphs[0]
     
 def coordinates(query):
-    """Gets coords for query using bing maps"""
+    '''
+    Gets the longitude and latitude for a location using bing maps
+    query is the location you wish to search for
+    maxResults sets how many results you wish to get
+    key is necessary to use the api
+    '''
     key = "Aj1X2oDWw6lKh5Y5Roy_uyou-ySwIiBhRzBVQMKMG9KVYoWXtw7XczdppkOnXe3L"
     url = "http://dev.virtualearth.net/REST/v1/Locations?query=%s&maxResults=1&key=%s"
     url = url%(query,key)
