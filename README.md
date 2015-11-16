@@ -5,8 +5,8 @@ Description
 A search engine based on Wikipedia and other APIs
 
 Uses:
-Wikipedia
-Google Maps
+Wikipedia, 
+Google Maps, 
 Bing Maps
 
 |Members|Roles|
