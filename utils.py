@@ -35,6 +35,9 @@ def getWiki(location):
     paragraphs = []
     for p in soup.find_all('p'):
         paragraphs.append(p.get_text().encode("utf-8"))
+        '''
+        Sometimes there is no first paragraph and therefore we must go to the second one
+        '''
     if(paragraphs[0] == ""):
         return paragraphs[1]
     else:
